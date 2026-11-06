@@ -1,0 +1,43 @@
+# =============================================================
+# .gitignore — o que NUNCA deve ir para o repositório
+# =============================================================
+
+# --- Segredos ---------------------------------------------------
+# Arquivo com a API key da Steam e o token do Databricks.
+# Versionamos só o .env.example (modelo sem valores reais).
+.env
+
+# --- Python -----------------------------------------------------
+# Ambiente virtual criado pelo uv (é recriado com `uv sync`).
+.venv/
+# Bytecode que o Python gera automaticamente ao importar módulos.
+__pycache__/
+*.py[cod]
+# Caches das ferramentas de teste e lint.
+.pytest_cache/
+.ruff_cache/
+
+# --- Dados ------------------------------------------------------
+# JSONs coletados localmente e amostras das APIs.
+# Os dados "de verdade" vivem no Volume do Databricks, não no Git.
+data/
+
+# --- dbt --------------------------------------------------------
+# SQL compilado e artefatos de execução (gerados a cada `dbt run`).
+dbt/target/
+# Logs de execução.
+dbt/logs/
+# Pacotes baixados por `dbt deps` (como a .venv, são recriados).
+dbt/dbt_packages/
+# Arquivo local com o id anônimo do dbt.
+dbt/.user.yml
+
+# --- Databricks -------------------------------------------------
+# Estado local do Databricks Asset Bundles (gerado no deploy).
+.databricks/
+
+# --- Sistema operacional ----------------------------------------
+# Arquivos que Windows/OneDrive/macOS criam sozinhos nas pastas.
+desktop.ini
+Thumbs.db
+.DS_Store
