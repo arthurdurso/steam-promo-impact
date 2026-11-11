@@ -1,0 +1,7 @@
+# Fim de linha padronizado no repositório, independente do sistema operacional.
+# O código roda em Linux (Databricks, GitHub Actions), então usamos LF em todos os arquivos de texto.
+* text=auto eol=lf
+
+# Exceção: scripts do Windows precisam de CRLF para funcionar no cmd.
+*.bat text eol=crlf
+*.cmd text eol=crlf
