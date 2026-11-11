@@ -1,0 +1,25 @@
+# Verificações executadas automaticamente a cada `git commit`.
+# Instalar o hook:      uv run pre-commit install
+# Rodar manualmente:    uv run pre-commit run --all-files
+
+repos:
+  # Verificações genéricas de arquivos (mantidas pelo próprio projeto pre-commit)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace      # remove espaços sobrando no fim das linhas
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer        # garante uma quebra de linha no fim do arquivo
+      - id: check-yaml               # YAML com sintaxe válida
+      - id: check-toml               # TOML com sintaxe válida
+      - id: check-added-large-files  # bloqueia arquivos grandes (ex.: dados por engano)
+      - id: check-merge-conflict     # bloqueia marcadores de conflito esquecidos (<<<<<<<)
+      - id: detect-private-key       # bloqueia chaves privadas
+
+  # Ruff: lint e formatação de Python
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.4                     # mesma versão do ruff no uv.lock
+    hooks:
+      - id: ruff-check
+        args: [--fix]                # corrige automaticamente o que for possível
+      - id: ruff-format
